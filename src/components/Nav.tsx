@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useScroll, useSpring } from "motion/react";
+import Image from "next/image";
 import { Command, Menu, Moon, Sun, X } from "lucide-react";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { profile } from "@/data/profile";
@@ -80,9 +81,7 @@ export function Nav() {
           }`}
         >
           <a href="#top" className="group flex items-center gap-2.5 rounded-full py-1 pl-1 pr-3">
-            <span className="grid size-9 place-items-center rounded-full bg-gradient-to-br from-accent to-accent-3 font-serif text-xl italic text-white shadow-[0_0_20px_var(--glow)] transition group-hover:rotate-12">
-              J
-            </span>
+            <Image src="/brand/logo.png" alt="" width={36} height={36} priority className="size-9 rounded-full shadow-[0_0_20px_var(--glow)] transition duration-500 group-hover:rotate-[360deg]" />
             <span className="font-semibold tracking-tight">{profile.nickname}</span>
           </a>
 

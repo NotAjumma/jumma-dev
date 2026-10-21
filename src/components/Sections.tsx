@@ -2,6 +2,7 @@
 
 import { motion, useScroll } from "motion/react";
 import { ArrowUpRight, Award, Bot, Check, Copy, GraduationCap, Mail, Sparkles } from "lucide-react";
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { aiWorkflow, awards, education, experience, profile, skills } from "@/data/profile";
 import { Chip, Magnetic, Reveal, SectionHeading, SpotlightCard } from "./ui";
@@ -215,6 +216,22 @@ export function Contact() {
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,#000_10%,transparent_65%)]" />
       <div className="absolute left-1/2 top-1/2 -z-10 size-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
       <div className={`${container} text-center`}>
+        <Reveal className="mb-6 flex justify-center">
+          <div className="relative">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 6 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, type: "spring", stiffness: 300, damping: 20 }}
+              className="absolute -right-28 top-2 whitespace-nowrap rounded-2xl rounded-bl-sm border border-line-strong bg-bg-2 px-3 py-1.5 text-sm shadow-lg sm:-right-36"
+            >
+              Hai! Let&apos;s talk 👋
+            </motion.div>
+            <motion.div animate={{ y: [0, -8, 0], rotate: [0, -2, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+              <Image src="/brand/kancil.png" alt="Sang Kancil, Jumma's mascot" width={120} height={159} className="drop-shadow-[0_12px_30px_var(--glow)]" />
+            </motion.div>
+          </div>
+        </Reveal>
         <Reveal>
           <div className="mb-6 font-mono text-xs tracking-[0.2em] text-muted uppercase">
             <span className="text-accent">07</span> · Contact
@@ -263,8 +280,11 @@ export function Footer() {
   return (
     <footer className="border-t border-line py-10">
       <div className={`${container} flex flex-col items-center justify-between gap-4 text-sm text-faint sm:flex-row`}>
-        <div>
-          © {new Date().getFullYear()} {profile.name} · <span className="font-serif italic">{profile.nickname}</span>
+        <div className="flex items-center gap-2.5">
+          <Image src="/brand/kancil.png" alt="" width={22} height={29} className="transition hover:-rotate-12" />
+          <span>
+            © {new Date().getFullYear()} {profile.name} · <span className="font-serif italic">{profile.nickname}</span>
+          </span>
         </div>
         <div className="flex items-center gap-4">
           <span>Built with Next.js, Tailwind & Motion</span>

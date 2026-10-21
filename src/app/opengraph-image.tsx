@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { profile } from "@/data/profile";
 
@@ -6,7 +8,11 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 // Link preview shown when the site is shared on LinkedIn, WhatsApp, etc.
-export default function OpengraphImage() {
+const dataUri = async (file: string) =>
+  `data:image/png;base64,${(await readFile(join(process.cwd(), "public/brand", file))).toString("base64")}`;
+
+export default async function OpengraphImage() {
+  const [logo, kancil] = await Promise.all([dataUri("logo.png"), dataUri("kancil.png")]);
   return new ImageResponse(
     (
       <div
@@ -20,25 +26,12 @@ export default function OpengraphImage() {
           background: "radial-gradient(circle at 15% 10%, #3b2a6b 0%, #07070c 55%), #07070c",
           color: "#f2f2f7",
           fontFamily: "sans-serif",
+          position: "relative",
         }}
       >
+        <img src={kancil} width={180} height={239} style={{ position: "absolute", right: 64, top: 48 }} alt="" />
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 64,
-              height: 64,
-              borderRadius: 64,
-              background: "linear-gradient(135deg, #a78bfa, #f472b6)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 38,
-              fontStyle: "italic",
-              color: "white",
-            }}
-          >
-            J
-          </div>
+          <img src={logo} width={64} height={64} style={{ borderRadius: 64 }} alt="" />
           <div style={{ fontSize: 32, fontWeight: 600 }}>{profile.nickname}</div>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
