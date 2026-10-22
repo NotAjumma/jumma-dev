@@ -58,7 +58,7 @@ export function Chip({ children, className = "" }: { children: ReactNode; classN
   );
 }
 
-/** Element that leans gently towards the cursor. */
+/** Element that leans gently towards the cursor. Mouse only: a tap never fires a leave, so touch would leave it stuck. */
 export function Magnetic({ children, strength = 0.25 }: { children: ReactNode; strength?: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const x = useSpring(useMotionValue(0), { stiffness: 200, damping: 15 });
@@ -68,12 +68,13 @@ export function Magnetic({ children, strength = 0.25 }: { children: ReactNode; s
       ref={ref}
       style={{ x, y }}
       className="inline-block"
-      onMouseMove={(e) => {
+      onPointerMove={(e) => {
+        if (e.pointerType !== "mouse") return;
         const r = ref.current!.getBoundingClientRect();
         x.set((e.clientX - r.left - r.width / 2) * strength);
         y.set((e.clientY - r.top - r.height / 2) * strength);
       }}
-      onMouseLeave={() => {
+      onPointerLeave={() => {
         x.set(0);
         y.set(0);
       }}

@@ -104,50 +104,41 @@ export function Hero() {
     <section id="top" ref={ref} onMouseMove={onMove} className="noise relative isolate overflow-hidden pb-20 pt-36 md:pb-28 md:pt-44">
       {/* Background: grid, drifting aurora, and a glow that follows the cursor */}
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,#000_20%,transparent_70%)]" />
-      <motion.div
-        className="absolute -left-40 -top-40 -z-10 size-[560px] rounded-full bg-accent/30 blur-[120px]"
-        animate={{ x: [0, 80, 0], y: [0, 40, 0] }}
-        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute -right-32 top-20 -z-10 size-[480px] rounded-full bg-accent-2/20 blur-[120px]"
-        animate={{ x: [0, -60, 0], y: [0, 60, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-      />
+      {/* Drift only on desktop: animating huge blurs is what makes phones stutter. */}
+      <div className="absolute -left-40 -top-40 -z-10 size-[560px] rounded-full bg-accent/30 blur-[120px] md:motion-safe:animate-[drift-a_18s_ease-in-out_infinite]" />
+      <div className="absolute -right-32 top-20 -z-10 size-[480px] rounded-full bg-accent-2/20 blur-[120px] md:motion-safe:animate-[drift-b_22s_ease-in-out_infinite]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(600px_circle_at_var(--hx,50%)_var(--hy,30%),var(--glow),transparent_45%)]" />
 
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.25fr_1fr]">
         <div>
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs text-muted backdrop-blur">
+          <div className="enter mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs text-muted backdrop-blur">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
             </span>
             {profile.availability}
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl"
+          <h1
+            style={{ "--enter-delay": "0.1s", "--enter-y": "30px" } as React.CSSProperties}
+            className="enter text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl md:text-7xl"
           >
             Hey, I&apos;m {profile.shortName}.
             <br />
             <span className="text-muted">You can call me </span>
             <span className="font-serif font-normal italic text-gradient">{profile.nickname}</span>
             <span className="text-muted">.</span>
-          </motion.h1>
+          </h1>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="mt-7 text-2xl font-medium tracking-tight sm:text-3xl">
+          <p style={{ "--enter-delay": "0.3s" } as React.CSSProperties} className="enter mt-7 text-2xl font-medium tracking-tight sm:text-3xl">
             <RotatingRole />
-          </motion.p>
+          </p>
 
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4, duration: 0.8 }} className="mt-5 max-w-xl text-lg leading-relaxed text-muted text-pretty">
+          <p style={{ "--enter-delay": "0.4s" } as React.CSSProperties} className="enter mt-5 max-w-xl text-lg leading-relaxed text-muted text-pretty">
             {profile.tagline}
-          </motion.p>
+          </p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.8 }} className="mt-9 flex flex-wrap items-center gap-3">
+          <div style={{ "--enter-delay": "0.5s" } as React.CSSProperties} className="enter mt-9 flex flex-wrap items-center gap-3">
             <Magnetic>
               <a href="#work" className="group inline-flex items-center gap-2 rounded-full bg-fg px-6 py-3.5 font-medium text-bg transition hover:shadow-[0_0_40px_var(--glow)]">
                 See my work
@@ -171,17 +162,17 @@ export function Hero() {
                 <Whatsapp size={19} />
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7 }} className="mt-8 flex items-center gap-2 text-sm text-faint">
+          <p style={{ "--enter-delay": "0.7s", "--enter-y": "0px" } as React.CSSProperties} className="enter mt-8 flex items-center gap-2 text-sm text-faint">
             <MapPin size={14} /> {profile.location}
-          </motion.p>
+          </p>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 40, rotate: 2 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ delay: 0.35, duration: 1, ease: [0.22, 1, 0.36, 1] }} className="relative">
+        <div style={{ "--enter-delay": "0.35s", "--enter-y": "40px" } as React.CSSProperties} className="enter relative">
           <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/25 via-accent-3/10 to-accent-2/20 blur-2xl" />
           <Terminal />
-        </motion.div>
+        </div>
       </div>
 
       <div className="mt-20 px-5 md:mt-28 md:px-8">
