@@ -20,7 +20,7 @@ export function Modal({ open, onClose, label, children }: { open: boolean; onClo
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[60] flex items-end justify-center bg-black/60 backdrop-blur-md sm:items-center sm:p-6"
+          className="fixed inset-0 z-[60] flex items-end justify-center bg-black/75 md:bg-black/60 md:backdrop-blur-md sm:items-center sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -40,7 +40,7 @@ export function Modal({ open, onClose, label, children }: { open: boolean; onClo
             <button
               onClick={onClose}
               aria-label="Close"
-              className="sticky top-4 z-10 float-right mr-4 mt-4 grid size-10 place-items-center rounded-full border border-line bg-bg/80 text-muted backdrop-blur transition hover:text-fg"
+              className="sticky top-4 z-10 float-right mr-4 mt-4 grid size-10 place-items-center rounded-full border border-line bg-bg/80 text-muted md:backdrop-blur transition hover:text-fg"
             >
               <X size={18} />
             </button>

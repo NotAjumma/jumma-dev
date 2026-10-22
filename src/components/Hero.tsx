@@ -56,7 +56,7 @@ function Terminal() {
   }, [line, typed]);
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-line-strong bg-bg-2/80 font-mono text-[13px] shadow-2xl backdrop-blur-xl">
+    <div className="relative overflow-hidden rounded-2xl border border-line-strong bg-bg-2/95 font-mono text-[13px] shadow-2xl md:bg-bg-2/80 md:backdrop-blur-xl">
       <div className="flex items-center gap-2 border-b border-line px-4 py-3">
         <span className="size-3 rounded-full bg-[#ff5f57]" />
         <span className="size-3 rounded-full bg-[#febc2e]" />
@@ -104,14 +104,14 @@ export function Hero() {
     <section id="top" ref={ref} onMouseMove={onMove} className="noise relative isolate overflow-hidden pb-20 pt-36 md:pb-28 md:pt-44">
       {/* Background: grid, drifting aurora, and a glow that follows the cursor */}
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_top,#000_20%,transparent_70%)]" />
-      {/* Drift only on desktop: animating huge blurs is what makes phones stutter. */}
-      <div className="absolute -left-40 -top-40 -z-10 size-[560px] rounded-full bg-accent/30 blur-[120px] md:motion-safe:animate-[drift-a_18s_ease-in-out_infinite]" />
-      <div className="absolute -right-32 top-20 -z-10 size-[480px] rounded-full bg-accent-2/20 blur-[120px] md:motion-safe:animate-[drift-b_22s_ease-in-out_infinite]" />
+      {/* Radial gradients rather than filter: blur, which phones redraw on every repaint. Drift is desktop-only. */}
+      <div className="absolute -left-[280px] -top-[280px] -z-10 size-[800px] bg-[radial-gradient(closest-side,var(--color-accent),transparent)] opacity-30 md:motion-safe:animate-[drift-a_18s_ease-in-out_infinite]" />
+      <div className="absolute -right-[248px] -top-10 -z-10 size-[720px] bg-[radial-gradient(closest-side,var(--color-accent-2),transparent)] opacity-20 md:motion-safe:animate-[drift-b_22s_ease-in-out_infinite]" />
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(600px_circle_at_var(--hx,50%)_var(--hy,30%),var(--glow),transparent_45%)]" />
 
       <div className="mx-auto grid max-w-6xl items-center gap-14 px-5 md:px-8 lg:grid-cols-[1.25fr_1fr]">
         <div>
-          <div className="enter mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs text-muted backdrop-blur">
+          <div className="enter mb-7 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface px-3.5 py-1.5 text-xs text-muted md:backdrop-blur">
             <span className="relative flex size-2">
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-emerald-400" />
@@ -170,7 +170,7 @@ export function Hero() {
         </div>
 
         <div style={{ "--enter-delay": "0.35s", "--enter-y": "40px" } as React.CSSProperties} className="enter relative">
-          <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-accent/25 via-accent-3/10 to-accent-2/20 blur-2xl" />
+          <div className="absolute -inset-6 -z-10 hidden rounded-[2rem] md:block bg-gradient-to-br from-accent/25 via-accent-3/10 to-accent-2/20 blur-2xl" />
           <Terminal />
         </div>
       </div>

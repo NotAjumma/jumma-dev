@@ -302,13 +302,13 @@ function ProjectModal({ p, onClose }: { p: Project | null; onClose: () => void }
               </motion.div>
             </AnimatePresence>
           </div>
-          <button onClick={() => go(-1)} aria-label="Previous image" className="absolute left-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-line bg-bg/80 backdrop-blur transition hover:bg-bg">
+          <button onClick={() => go(-1)} aria-label="Previous image" className="absolute left-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-line bg-bg/80 md:backdrop-blur transition hover:bg-bg">
             <ChevronLeft size={18} />
           </button>
-          <button onClick={() => go(1)} aria-label="Next image" className="absolute right-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-line bg-bg/80 backdrop-blur transition hover:bg-bg">
+          <button onClick={() => go(1)} aria-label="Next image" className="absolute right-3 top-1/2 grid size-10 -translate-y-1/2 place-items-center rounded-full border border-line bg-bg/80 md:backdrop-blur transition hover:bg-bg">
             <ChevronRight size={18} />
           </button>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-bg/80 px-3 py-1 text-xs text-muted backdrop-blur">{p.images[idx].alt}</div>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-bg/80 px-3 py-1 text-xs text-muted md:backdrop-blur">{p.images[idx].alt}</div>
         </div>
         <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {p.images.map((im, i) => (

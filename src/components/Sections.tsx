@@ -140,7 +140,7 @@ export function Skills() {
         ))}
         <Reveal delay={0.3}>
           <SpotlightCard className="relative h-full overflow-hidden p-6">
-            <div className="absolute -right-10 -top-10 size-40 rounded-full bg-accent/20 blur-3xl" />
+            <div className="absolute -right-16 -top-16 size-72 bg-[radial-gradient(closest-side,var(--color-accent),transparent)] opacity-20" />
             <div className="mb-4 flex items-center gap-2">
               <Bot size={18} className="text-accent" />
               <h3 className="font-semibold">AI-assisted engineering</h3>
@@ -214,7 +214,7 @@ export function Contact() {
   return (
     <section id="contact" className="relative overflow-hidden py-28 md:py-40">
       <div className="bg-grid absolute inset-0 -z-10 [mask-image:radial-gradient(ellipse_at_center,#000_10%,transparent_65%)]" />
-      <div className="absolute left-1/2 top-1/2 -z-10 size-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-[140px]" />
+      <div className="absolute left-1/2 top-1/2 -z-10 size-[880px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(closest-side,var(--color-accent),transparent)] opacity-20" />
       <div className={`${container} text-center`}>
         <Reveal className="mb-6 flex justify-center">
           <div className="relative">
@@ -227,9 +227,9 @@ export function Contact() {
             >
               Hai! Let&apos;s talk 👋
             </motion.div>
-            <motion.div animate={{ y: [0, -8, 0], rotate: [0, -2, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+            <div className="motion-safe:animate-[float_4s_ease-in-out_infinite]">
               <Image src="/brand/kancil.png" alt="Sang Kancil, Jumma's mascot" width={120} height={159} className="drop-shadow-[0_12px_30px_var(--glow)]" />
-            </motion.div>
+            </div>
           </div>
         </Reveal>
         <Reveal>
@@ -245,7 +245,7 @@ export function Contact() {
         </Reveal>
         <Reveal delay={0.15} className="mt-10 flex flex-col items-center gap-4">
           <Magnetic strength={0.15}>
-            <div className="flex items-center gap-1 rounded-full border border-line-strong bg-bg/60 p-1.5 pl-6 backdrop-blur">
+            <div className="flex items-center gap-1 rounded-full border border-line-strong bg-bg/90 p-1.5 pl-6 md:bg-bg/60 md:backdrop-blur">
               <span className="font-mono text-sm sm:text-base">{profile.email}</span>
               <button onClick={copy} aria-label="Copy email" className="ml-2 grid size-10 place-items-center rounded-full text-muted transition hover:bg-surface-strong hover:text-fg">
                 {copied ? <Check size={17} className="text-emerald-400" /> : <Copy size={17} />}

@@ -70,7 +70,7 @@ export function CommandPalette({ open, onClose, toggleTheme }: { open: boolean; 
     <>
       <AnimatePresence>
         {open && (
-          <motion.div className="fixed inset-0 z-[80] flex items-start justify-center bg-black/50 px-4 pt-[15vh] backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={close}>
+          <motion.div className="fixed inset-0 z-[80] flex items-start justify-center bg-black/50 px-4 pt-[15vh] md:backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={close}>
             <motion.div
               role="dialog"
               aria-label="Command palette"

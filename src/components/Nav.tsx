@@ -77,7 +77,7 @@ export function Nav() {
       <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
         <nav
           className={`flex w-full max-w-5xl items-center justify-between gap-2 rounded-full border px-2 py-2 transition-all duration-500 ${
-            scrolled ? "border-line bg-bg/70 shadow-lg shadow-black/10 backdrop-blur-xl" : "border-transparent"
+            scrolled ? "border-line bg-bg/95 shadow-lg shadow-black/10 md:bg-bg/70 md:backdrop-blur-xl" : "border-transparent"
           }`}
         >
           <a href="#top" className="group flex items-center gap-2.5 rounded-full py-1 pl-1 pr-3">
@@ -125,7 +125,7 @@ export function Nav() {
 
       <AnimatePresence>
         {menu && (
-          <motion.div className="fixed inset-0 z-[65] bg-bg/95 backdrop-blur-xl md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div className="fixed inset-0 z-[65] bg-bg/95 md:backdrop-blur-xl md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
             <button onClick={() => setMenu(false)} className="absolute right-6 top-6 grid size-10 place-items-center rounded-full border border-line" aria-label="Close menu">
               <X size={18} />
             </button>
