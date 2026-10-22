@@ -41,7 +41,8 @@ function Flow({ nodes }: { nodes: string[] }) {
 }
 
 function CaseCard({ c, i, onOpen }: { c: CaseStudy; i: number; onOpen: () => void }) {
-  const wide = i === 0;
+  // First card spans the row; so does the last when it would otherwise sit alone.
+  const wide = i === 0 || (i === caseStudies.length - 1 && caseStudies.length % 2 === 0);
   return (
     <Reveal delay={i * 0.08} className={wide ? "lg:col-span-2" : ""}>
       <SpotlightCard as="button" onClick={onOpen} className="group h-full w-full cursor-pointer overflow-hidden text-left">

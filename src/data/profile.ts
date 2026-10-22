@@ -195,6 +195,31 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ["Laravel", "PHP", "MySQL", "Web scraping", "REST API", "WordPress", "Scheduled jobs"],
   },
+  {
+    id: "crm",
+    title: "Custom CRM systems",
+    client: "Business clients of Horuz Technology",
+    kind: "Backend · Laravel",
+    summary:
+      "New CRM systems built around each client's own process, kept in sync with the external systems they already use, and deployed live on their own domains.",
+    flow: ["Figma UI", "Laravel", "MySQL", "Third-party APIs", "GitHub deploy", "NetShop hosting"],
+    problem:
+      "Each client needed a CRM shaped to how they work, not an off-the-shelf one. Customer data also lived in other systems, so the CRM had to pull from and push to them, and every system had to be hosted, deployed and reachable on the client's domain.",
+    built: [
+      "Led back-end development of new CRM systems in Laravel, tailored to each client's requirements.",
+      "Third-party API integrations that retrieve and insert data in external systems, keeping the CRM up to date in both directions.",
+      "Role-based access (admin, client and more) so each user manages and sees only the data relevant to them.",
+      "Automated deployments from GitHub to NetShop servers, keeping live systems up and stable.",
+      "Domain and DNS setup on GoDaddy so each live system routes correctly.",
+      "Responsive, mobile-friendly screens built from Figma designs with the front-end team.",
+    ],
+    highlights: [
+      { metric: "2-way", label: "third-party data sync" },
+      { metric: "Auto", label: "deploys from GitHub" },
+      { metric: "Lead", label: "back-end developer" },
+    ],
+    tech: ["Laravel", "PHP", "MySQL", "JavaScript", "REST API", "GitHub Actions", "NetShop hosting", "GoDaddy DNS"],
+  },
 ];
 
 export type Project = {
