@@ -236,6 +236,7 @@ export type Project = {
   repo?: string;
   featured?: boolean;
   stats?: { metric: string; label: string }[];
+  links?: { label: string; href: string }[];
 };
 
 // Sistem Kami is shown on its own as the flagship project.
@@ -321,28 +322,52 @@ export const projects: Project[] = [
     device: "phone",
   },
   {
-    id: "movie-character-night",
-    title: "Movie Character Night",
-    tagline: "Event photo & video drop, straight into Google Drive",
+    id: "sistem-kami-kahwin",
+    title: "Sistem Kami Kahwin",
+    tagline: "Wedding cards, a guest photo album and a planner · 142 users in 3 weeks",
     year: "2026",
-    kind: "Web app · Vercel",
+    kind: "My own product · Full-stack",
     featured: true,
     description:
-      "Guests at an event scan a QR code, then upload photos and videos from their phone and browse a shared gallery, with no app and no sign-in. Files upload directly from the browser into Google Drive using resumable uploads, so large videos skip Vercel's 4.5 MB request limit entirely.",
+      "Three wedding apps for Malaysian couples that I build, sell and run. Kad is a digital wedding invitation with RSVP, guest wishes, maps, calendar and music, in 30 illustrated themes. Moment lets guests scan a QR code at the majlis and upload photos and videos from their phone into one shared album, with no app and no sign-in. Rancang Kahwin is a free planner a couple shares: tasks by nikah date, vendor comparison, budget and a savings goal. Couples sign in with Google, design their own card with a live preview, and pay online to publish it. In its first three weeks live it had 1,300+ visitors, 142 sign-ups and 28 paying customers. Next targets: 4,000+ visitors, 300+ wedding plans and 50+ paid orders.",
     features: [
-      "Browser → Google Drive resumable upload with live progress",
-      "Video thumbnails captured in the browser for an instant gallery",
-      "Swipeable full-screen viewer with streamed video playback",
-      "Least-privilege Drive scope: the app only sees files it created",
+      "Wedding card with RSVP by session, guest wishes, Google Maps / Waze, save to calendar, music and DuitNow QR",
+      "Self-serve editor with live preview, Google sign-in and online checkout (Stripe, CHIP: FPX, cards, GrabPay)",
+      "Guest photos and videos upload from the phone straight into Google Drive, paced under Drive's write limit",
+      "Shared album with likes, albums, photobooth, TV slideshow and whole-album download",
+      "Planner shared with a partner that works offline and merges edits made on both phones",
+      "Printable A5/A6 PDF of the card, made in the browser",
+      "Automated WhatsApp reminders and review requests, sent only during set hours",
+      "Load-tested against a copy of production data with a fake Google Drive",
     ],
-    tech: ["Node.js", "Vercel Functions", "Google Drive API", "OAuth 2.0", "Vanilla JS"],
+    tech: ["Next.js", "PostgreSQL", "Google Drive API", "Stripe", "React", "CHIP", "Cloudflare R2", "WhatsApp API", "Railway", "Vitest"],
     images: [
-      { src: "/projects/mcn/home.jpg", alt: "Event landing page" },
-      { src: "/projects/mcn/upload.jpg", alt: "Upload screen with selected photos" },
-      { src: "/projects/mcn/progress.jpg", alt: "Upload progress dialog" },
-      { src: "/projects/mcn/gallery.jpg", alt: "Event gallery grid" },
+      { src: "/projects/kahwin/kad-cover.jpg", alt: "Kad: invitation cover" },
+      { src: "/projects/kahwin/kad-open.jpg", alt: "Kad: opened card" },
+      { src: "/projects/kahwin/kad-rsvp.jpg", alt: "Kad: RSVP form" },
+      { src: "/projects/kahwin/momen-home.jpg", alt: "Moment: guest album home" },
+      { src: "/projects/kahwin/momen-gallery.jpg", alt: "Moment: shared gallery" },
+      { src: "/projects/kahwin/momen-upload.jpg", alt: "Moment: upload screen" },
+      { src: "/projects/kahwin/rancang-hari.jpg", alt: "Rancang Kahwin: countdown and this week's tasks" },
+      { src: "/projects/kahwin/rancang-persiapan.jpg", alt: "Rancang Kahwin: budget, guests and preparations" },
     ],
     device: "phone",
+    // Live numbers from production, 24 Oct – 11 Nov 2026 (paid orders exclude my own tests).
+    stats: [
+      { metric: "1,300+", label: "visitors in the first 3 weeks" },
+      { metric: "142", label: "users signed up with Google" },
+      { metric: "28", label: "paying customers" },
+      { metric: "81", label: "weddings planned in Rancang Kahwin" },
+      { metric: "3", label: "live apps: Kad · Moment · Rancang" },
+      { metric: "30", label: "card themes" },
+      { metric: "440+", label: "automated tests" },
+      { metric: "190", label: "commits in 3 weeks" },
+    ],
+    links: [
+      { label: "Kad", href: "https://kad.sistemkami.com" },
+      { label: "Moment", href: "https://moment.sistemkami.com" },
+      { label: "Rancang Kahwin", href: "https://rancangkahwin.sistemkami.com" },
+    ],
   },
   {
     id: "smashon",

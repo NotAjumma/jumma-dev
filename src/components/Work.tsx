@@ -273,6 +273,21 @@ function ProjectModal({ p, onClose }: { p: Project | null; onClose: () => void }
         </div>
         <h3 className="mt-2 text-3xl font-semibold tracking-tight md:text-4xl">{p.title}</h3>
         <p className="mt-2 text-lg text-accent">{p.tagline}</p>
+        {p.links && (
+          <div className="mt-5 flex flex-wrap gap-2">
+            {p.links.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-line-strong bg-surface px-3.5 py-1.5 text-sm font-medium transition hover:border-accent hover:text-accent"
+              >
+                {l.label} <ArrowUpRight size={14} />
+              </a>
+            ))}
+          </div>
+        )}
         {p.stats && (
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {p.stats.map((s) => (
